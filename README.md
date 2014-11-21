@@ -13,4 +13,4 @@ Some progres see here: http://4pda.ru/forum/index.php?showtopic=496786&st=940#en
 - Logging cmd to file (maybe all started functions, unpack, pack, etc.), and for example to additional debug window, so you can see what problems have arisen at some stage.
 - Needed progressbar for some operations (unpack zip, etc.), but to do it, needed to make multithreading, and run background processes.
 
-Thanks for attention, hope my program receive new breath.
+Thanks for attention, hope my program receive new breath with new peoples.
