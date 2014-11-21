@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E912374-6272-4A9F-9CCB-BB35CBBC44A0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MFAT</RootNamespace>
+    <AssemblyName>MTK FirmwareAdapter Tool</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mediatek.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>bin\Debug\Bin\Ionic.Zip.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BR_repack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BR_repack.Designer.cs">
+      <DependentUpon>BR_repack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Message.Designer.cs">
+      <DependentUpon>Message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlassTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ini.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BR_repack.resx">
+      <DependentUpon>BR_repack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Message.resx">
+      <DependentUpon>Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Rs\Bin\cpio_set0" />
+    <None Include="Rs\Bin\testkey.pk8" />
+    <None Include="Rs\Bin\testkey.x509.pem" />
+    <None Include="Rs\Projects\IQ446_4.1.2.fat" />
+    <None Include="Rs\Projects\IQ446_4.1.2_MIUI from_A820.fat" />
+    <None Include="Rs\Projects\IQ446_4.2.1.fat" />
+    <None Include="Rs\Projects\IQ446_4.2.1_BaiduYIOS_from_N828.fat" />
+    <None Include="Rs\Projects\IQ446_4.2.1_StockROM_from_Acer_E2.fat" />
+    <None Include="Rs\Projects\LewaOS_5.1_no crash browsers.IQ446_4.2.1_by_Galaxy_Ace_ICS.fat" />
+    <None Include="Rs\Projects\MT6575.fat" />
+    <None Include="Rs\Projects\MT6577.fat" />
+    <None Include="Rs\Projects\MT6589.fat" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Rs\Langs\Czech.ini.dll" />
+    <None Include="Rs\Bin\notify.wav.dll" />
+    <None Include="Rs\Bin\signapk.jar" />
+    <None Include="Rs\Bin\signapk.cmd.dll" />
+    <None Include="Rs\Bin\sfk166.exe" />
+    <None Include="Rs\Bin\mkbootimg.exe" />
+    <None Include="Rs\Bin\Ionic.Zip.dll" />
+    <None Include="Rs\Bin\imgunpack.cmd.dll" />
+    <None Include="Rs\Bin\imgpack.cmd.dll" />
+    <None Include="Rs\Bin\gzip.exe" />
+    <None Include="Rs\Bin\find.txt.dll" />
+    <None Include="Rs\Bin\find.exe" />
+    <None Include="Rs\Bin\find.dll" />
+    <None Include="Rs\Bin\Ext4Extractor.exe" />
+    <None Include="Rs\Bin\dd.exe" />
+    <None Include="Rs\Bin\cygwin1.dll" />
+    <None Include="Rs\Bin\cygintl-8.dll" />
+    <None Include="Rs\Bin\cygiconv-2.dll" />
+    <None Include="Rs\Bin\cyggcc_s-1.dll" />
+    <None Include="Rs\Bin\cpio.txt.dll" />
+    <None Include="Rs\Bin\cpio.exe" />
+    <None Include="Rs\Bin\cpio.dll" />
+    <None Include="Rs\Bin\config.ini.dll" />
+    <None Include="Rs\Bin\chmod.exe" />
+    <None Include="Rs\Bin\AdbWinUsbApi.dll" />
+    <None Include="Rs\Bin\AdbWinApi.dll" />
+    <None Include="Rs\Bin\adb.exe" />
+    <None Include="Rs\Bin\7z.exe" />
+    <None Include="Rs\Bin\7z.dll" />
+    <None Include="Rs\Langs\English.ini.dll" />
+    <None Include="Normal.png" />
+    <None Include="Maxi.png" />
+    <Content Include="mediatek.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 с пакетом обновления 1 %28SP1%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

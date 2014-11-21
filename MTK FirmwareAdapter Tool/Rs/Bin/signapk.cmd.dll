@@ -1,0 +1,47 @@
+cls
+@echo off
+echo.
+echo SIGNAPK.CMD - 2010-04-11 (fixed problem with spaces in filenames)
+echo Written by phaelox, to make using signapk.jar simpler
+echo Modified for MTK FirmwareAdapterTool by Back37
+echo.
+:java
+for %%G in ("%path:;=" "%") do if exist %%G\java.exe set JRE=%%G
+set ProgFiles=%SystemDrive%\Program Files
+if exist "%ProgFiles%\Java\jre7\bin" set JRE="%ProgFiles%\Java\jre7\bin"
+if exist "%ProgFiles%\Java\jre6\bin" set JRE="%ProgFiles%\Java\jre6\bin"
+if exist "%SystemDrive%\Program Files (x86)\Java\jre6\bin" set JRE="%SystemDrive%\Program Files (x86)\Java\jre6\bin"
+if exist "%SystemDrive%\Program Files (x86)\Java\jre7\bin" set JRE="%SystemDrive%\Program Files (x86)\Java\jre7\bin"
+:skiptry
+if not [%1]==[] goto sign
+echo SYNTAX ERROR. Usage: %~n0 filename
+echo.
+echo Example: %~n0 update.zip
+echo Example: %~n0 bootscreen_stock_nosound.zip
+echo.
+goto end
+:sign
+if not exist %1 (echo ERROR: file %1 not found!
+goto end)
+:fileexist
+goto proceed
+:proceed
+if [%JRE%]==[] goto tryanyway
+echo [JAVA.EXE detected in %JRE%]
+echo Signing %1...
+%JRE%\java -jar "signapk.jar" "testkey.x509.pem" "testkey.pk8" %1 "%~n1_signed%~x1"
+goto succesornot
+:tryanyway
+echo If you get an error java.exe not found,
+echo add Java 'bin' folder to %%PATH%% environment variable.
+echo Possible JAVA.EXE location: "C:\Program Files (x86)\Java\jre6\bin"
+echo (Could not detect actual location^)
+echo.
+echo Trying to sign %1...
+java -jar "signapk.jar" "testkey.x509.pem" "testkey.pk8" %1 "%~n1_signed%~x1"
+:succesornot
+if %ERRORLEVEL%==0 echo Succesfully signed, new file: "%~n1_signed%~x1"
+:end
+set JRE=
+set ProgFiles=
+set OVRW=

@@ -1,0 +1,138 @@
+[settings]
+Lang=Language
+Ok=Save
+Cancel=Exit
+Sound=Sound notifications
+Mes_time=Message show time
+
+[main]
+err=Error
+succ=Files successfully received
+err1=ROM to port boot.img
+err2=not founded
+err3=Your boot.img
+un_succ=Unpack successful
+re_succ=Repack successful
+build_succ=Build successful
+repeat=Repeat unpacking again
+sign_succ=Zip sign successful
+err4=Rom to port
+err5=not founded
+err6=Files from your
+err7=ROM not founded
+del_succ=Delete successful
+del_err=Delete error
+temp_succ=Temp files
+temp_succ1= delete successful
+ok=Ok
+meta=META-INF not found!
+choose=Choose
+exit=Exit
+chooses=Choose unpacked system folder
+choosem=Choose unpacked META-INF folder
+get=Get new file list
+next=Next
+sa=Select all
+us=Deselect all
+des=Choose folder with your files. It must contain system folder
+yf=From YourFiles folder
+sm=Other directory
+mf=Choose unpacked META-INF folder
+mz=Get META-INF from zip
+
+nw=New project
+
+group1=Information
+group2=Utilits
+group3=Project edit
+group4=Your ROM
+group5=ROM to port
+group6=Firmware
+group7=Others
+
+check1=Select All
+check2=Full Path
+check3=Custom ROM name
+check4=Auto boot.img repack
+check5=Sign ROM
+check6=Rewrite
+
+text1=Input folder or file name with extension
+text2=Input full path include folder or file name
+
+box1=Files from Zip
+box2=Files from system.img
+box3=Files from folders
+box4=Files from phone (not recommended)
+
+tab1=Main
+tab2=Project
+tab3=Preparation
+tab4=Work
+
+button1=About
+button2=Open logcat
+button3=Delete temp files
+button4=Sign Zip
+button5=Save project
+button6=Import project
+button7=Exclude checked from the project
+button8=Add
+button9=Get files
+button10=Open folder with files
+button11=Edit build.prop
+button12=Edit updater-script
+button13=Unpack
+button14=Pack
+button15=Open folder
+button16=Build ROM
+button17=Open folder with ROM
+button18=Delete project files
+button22=Get file list from folder
+button33=Open with text editor
+da=Delete all
+dc=Delete checked
+
+[about]
+group=Threads about MTK Porting
+author=Created by: 
+4pd=4PDA member:
+ch=China-Iphone member:
+xda=XDA member:
+
+[editor]
+file=File
+edit=Edit
+exit=Exit
+save=Save
+undo=Undo
+redo=Redo
+cut=Cut
+copy=Copy
+del=Delete
+paste=Paste
+checkall=Check All
+str=Save changes?
+yes=Yes
+no=No
+canc=Cancel
+
+[repacker]
+choosepc1=Get
+choosepc2=from PC
+choosep1=Get
+choosep2=from phone
+open=Open folder with unpacked
+build=Build new
+open1=Open folder
+open2=with builded
+sent1=Sent builded
+sent2=to phone
+succ=successfully received
+str=Check the work
+str1=If it's work, click Yes
+str2=Else, click No
+no=No
+yes=Yes
+build=successfully builded
+ok=Ok

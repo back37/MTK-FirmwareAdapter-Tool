@@ -1,0 +1,78 @@
+@echo off
+cd "%~dp0"
+chcp 1251
+if (%1)==() (
+	echo Select image
+		goto end
+)
+
+setlocal enabledelayedexpansion
+COLOR 0A
+mode con:cols=128 lines=50
+sfk166.exe hexfind %1 -pat -bin /88168858/ -case >offset.txt
+sfk166.exe hexfind %1 -pat -bin /FFFFFFFF1F8B08/ -case >>offset.txt 
+sfk166.exe find offset.txt -pat offset>off2.txt
+sfk166.exe replace off2.txt -binary /20/0A/ -yes
+
+if exist %~N1 rd /s /q %~N1 >nul
+
+set /A N=0
+:loop
+FOR /F %%G IN (off2.txt) DO (
+	if !N!==1 (
+		set /A ofs1=%%G
+		set /A N+=1
+	)
+	if !N!==3 (
+		set /A ofs2=%%G
+		set /A N+=1
+	)
+	if !N!==5 (
+		set /A ofs3=%%G+4
+		set /A N+=1
+	)	
+	if `%%G` EQU `offset` (
+		set /A N+=1
+	)
+)
+FOR %%i IN (%1) DO ( set /A boot_size=%%~Zi )
+echo.
+echo - size of %1 %boot_size% byte
+echo - kernel offset     - %ofs1%
+echo - ram_header offset - %ofs2%
+echo - ram_disk offset   - %ofs3%
+echo.
+
+del offset.txt
+del off2.txt
+md "%~N1"
+echo - extracting kernel_header...
+sfk166.exe partcopy %1 -fromto 0x0 %ofs1% %~N1\kernel_header -yes
+echo - extracting kernel...
+sfk166.exe partcopy %1 -fromto %ofs1% %ofs2% %~N1\kernel -yes
+echo - extracting ram_header...
+sfk166.exe partcopy %1 -fromto %ofs2% %ofs3% %~N1\ram_header -yes
+echo - extracting ram_disk...
+sfk166.exe partcopy %1 -fromto %ofs3% %boot_size% %~N1\ram_disk.gz -yes
+
+echo - unpack ram_disk.gz...
+
+7z.exe -tgzip x -y "%~N1\ram_disk.gz" -o%~N1\gz >nul
+move "%~N1\gz\*" "%~N1\ram_disk"
+rd "%~N1\gz"
+
+echo - unpack ram_disk.cpio...
+
+md "%~N1\rmdisk"
+cd "%~N1"
+cd rmdisk
+
+"%~dp0\cpio.exe" -i <../ram_disk
+cd ..
+cd ..
+
+copy %1 "%~N1"
+echo.
+echo.
+echo - Done^!
+:end
