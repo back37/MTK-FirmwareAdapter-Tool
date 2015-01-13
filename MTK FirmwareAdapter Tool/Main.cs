@@ -2064,7 +2064,7 @@ namespace MTFAT
                     folderBrowserDialog1.Description = choosem;
                     if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        CopyDirectory(folderBrowserDialog1.SelectedPath, "Utilits/Temp");
+                        CopyDirectory(folderBrowserDialog1.SelectedPath, "Utilits/Temp/META-INF");
                     }
                     else
                         return;
