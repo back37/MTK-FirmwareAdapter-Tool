@@ -112,12 +112,12 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="adb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Rs\Bin\adb.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -249,5 +249,17 @@
   </data>
   <data name="Czech_ini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Rs\Langs\Czech.ini.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="rom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Rs\Bin\rom.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LEWA6_ZP998_4_2_2_HOHOL77" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Rs\Projects\LEWA6_ZP998_4.2.2_HOHOL77.fat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MIUI6_ZP998_4_4_2_HOHOL77" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Rs\Projects\MIUI6_ZP998_4.4.2_HOHOL77.fat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MT6589T" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Rs\Projects\MT6589T.fat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

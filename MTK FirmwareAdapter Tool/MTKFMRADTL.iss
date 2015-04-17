@@ -3,15 +3,15 @@
 
 [Setup]
 AppName=MTK FirmwareAdapter Tool
-AppVersion=2.0.0.5
-VersionInfoVersion=2.0.0.5
-AppVerName=MTK FirmwareAdapter Tool 2.0.0.5
+AppVersion=2.0.0.6
+VersionInfoVersion=2.0.0.6
+AppVerName=MTK FirmwareAdapter Tool 2.0.0.6
 DefaultDirName=C:\MTK FirmwareAdapter Tool
 DefaultGroupName=MTK FirmwareAdapter Tool
 AllowNoIcons=yes
-OutputDir=C:\Users\Владиимир\Desktop
+OutputDir=C:\Users\Back37\Desktop
 OutputBaseFilename=Setup
-SetupIconFile=D:\MFAT\MTK FirmwareAdapter Tool\MTK FirmwareAdapter Tool\mediatek.ico
+SetupIconFile=E:\MTK-FirmwareAdapter-Tool-master\MTK FirmwareAdapter Tool\mediatek.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -24,7 +24,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\MFAT\MTK FirmwareAdapter Tool\MTK FirmwareAdapter Tool\bin\Release\MTK FirmwareAdapter Tool.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\MTK-FirmwareAdapter-Tool-master\MTK FirmwareAdapter Tool\bin\Release\MTK FirmwareAdapter Tool.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; ОТМЕТЬТЕ: Не используйте "Флажки: Проигнорировать версию" на любых общедоступных системных файлах
 [InstallDelete]
 Name: "{app}\Langs\English.ini"; Type: files
