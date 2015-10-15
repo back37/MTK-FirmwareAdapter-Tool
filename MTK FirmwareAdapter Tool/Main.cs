@@ -57,6 +57,9 @@ namespace MTFAT
         string mz = "Получить META-INF из ZIP";
         string text1 = "Введите название папки или файла с расширением";
         string text2 = "Введите путь включая нужный файл или папку";
+        string syu = "Распаковать system";
+        string syn = "Использовать образ";
+        string syd = "Что делать с system.img";
 
     #endregion
 
@@ -94,6 +97,12 @@ namespace MTFAT
                 File.WriteAllBytes("Projects\\IQ446_4.2.1_BaiduYIOS_from_N828.fat", MFAT.Properties.Resources.IQ446_4_2_1_BaiduYIOS_from_N828);
             if (File.Exists("Projects\\IQ446_4.2.1_StockROM_from_Acer_E2.fat") == false)
                 File.WriteAllBytes("Projects\\IQ446_4.2.1_StockROM_from_Acer_E2.fat", MFAT.Properties.Resources.IQ446_4_2_1_StockROM_from_Acer_E2);
+            if (File.Exists("Projects\\Fly_IQ453_stockROM_from_Oppo_R819.fat") == false)
+                File.WriteAllBytes("Projects\\Fly_IQ453_stockROM_from_Oppo_R819.fat", MFAT.Properties.Resources.MT6589T);
+            if (File.Exists("Projects\\LEWA6_ZP998_4.2.2_HOHOL77.fat") == false)
+                File.WriteAllBytes("Projects\\LEWA6_ZP998_4.2.2_HOHOL77.fat", MFAT.Properties.Resources.LEWA6_ZP998_4_2_2_HOHOL77);
+            if (File.Exists("Projects\\MIUI6_ZP998_4.4.2_HOHOL77.fat") == false)
+                File.WriteAllBytes("Projects\\MIUI6_ZP998_4.4.2_HOHOL77.fat", MFAT.Properties.Resources.MIUI6_ZP998_4_4_2_HOHOL77);
 
             //Projects by Users
             if (File.Exists("Projects\\LewaOS_5.1_no crash browsers.IQ446_4.2.1_by_Galaxy_Ace_ICS.fat") == false)
@@ -284,6 +293,9 @@ namespace MTFAT
                 if (l.ReadString("main", "sm") != "") { sm = l.ReadString("main", "sm"); }
                 if (l.ReadString("main", "mf") != "") { mf = l.ReadString("main", "mf"); }
                 if (l.ReadString("main", "mz") != "") { mz = l.ReadString("main", "mz"); }
+                if (l.ReadString("main", "syu") != "") { syu = l.ReadString("main", "syu"); }
+                if (l.ReadString("main", "syn") != "") { syn = l.ReadString("main", "syn"); }
+                if (l.ReadString("main", "syd") != "") { syd = l.ReadString("main", "syd"); }
                 //Группы
                 if (l.ReadString("main", "group1") != "") { groupBox7.Text = l.ReadString("main", "group1"); }
                 if (l.ReadString("main", "group2") != "") { groupBox8.Text = l.ReadString("main", "group2"); }
@@ -1993,106 +2005,189 @@ namespace MTFAT
 
         private void button32_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "System Image File |*system*.img";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    Process win = new Process();
-                    win.StartInfo.FileName = Directory.GetCurrentDirectory() + "//Bin//Ext4Extractor.exe";
+            
+                 Message MS = new Message(syd, null, null, next, null, null, null, 1, 0);
+                 MS.SetDesktopLocation(this.Location.X + (this.Width / 2) - (MS.Width / 2), this.Location.Y + (this.Height / 2) - (MS.Height / 2));
+                 MS.groupBox7.Visible = true;
+                 MS.radioButton1.Text = syu;
+                 MS.radioButton2.Text = syn;
+                 MS.ShowDialog();
 
-                    if (Directory.Exists("Utilits\\Temp") == true)
-                    {
-                        Directory.Delete("Utilits\\Temp", true);
-                    }
+                 string tmp = DateTime.Now.ToString("dd.MM.yy_HH-mm-ss");
 
-                    Directory.CreateDirectory("Utilits\\Temp");
+                 if (MS.radioButton1.Checked == true)
+                 {
 
-                    win.StartInfo.Arguments = "\"" + openFileDialog1.FileName + "\"" + " \"Utilits\\Temp\\system\"";
-                    win.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    win.StartInfo.ErrorDialog = false;
-                    this.Cursor = Cursors.WaitCursor;
-                    win.Start();
-                    win.WaitForExit();
-                    this.Cursor = Cursors.Default;
+                     openFileDialog1.Filter = "System Image File |*system*.img";
+                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                     {
+                         try
+                         {
+                             Process win = new Process();
+                             win.StartInfo.FileName = Directory.GetCurrentDirectory() + "//Bin//Ext4Extractor.exe";
 
-                }
-                finally
-                {
-                    openFileDialog1.Filter = "Boot Image File |*boot*.img";
-                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        File.Copy(openFileDialog1.FileName, "Utilits\\Temp\\boot.img", true);
-                    }
-                }
+                             if (Directory.Exists("Utilits\\Temp") == true)
+                             {
+                                 Directory.Delete("Utilits\\Temp", true);
+                             }
 
-                Message M = new Message("META-INF", null, null, next, null, null, null, 1, 0);
-                M.SetDesktopLocation(this.Location.X + (this.Width / 2) - (M.Width / 2), this.Location.Y + (this.Height / 2) - (M.Height / 2));
-                M.groupBox7.Visible = true;
-                M.radioButton1.Text = mz;
-                M.radioButton2.Text = mf;
-                M.ShowDialog();
+                             Directory.CreateDirectory("Utilits\\Temp");
 
-                if (M.radioButton1.Checked == true)
-                {
-                    if (openFileDialog2.ShowDialog() == DialogResult.OK)
-                    {
-                        string Patch0 = Directory.GetCurrentDirectory() + @"\Bin\trace.bat";
-                        StreamWriter BatFile0 = new StreamWriter(Patch0, false, Encoding.GetEncoding(866));
-                        BatFile0.WriteLine("@echo off");
-                        BatFile0.WriteLine("cd /d " + Directory.GetCurrentDirectory() + @"\Bin");
-                        BatFile0.WriteLine("7z.exe x " + "\"" + openFileDialog2.FileName.ToString() + "\" -o\"" + Directory.GetCurrentDirectory() + "\\Utilits\\Temp\" META-INF -r -y");
-                        BatFile0.Close();
+                             win.StartInfo.Arguments = "\"" + openFileDialog1.FileName + "\"" + " \"Utilits\\Temp\\system\"";
+                             win.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                             win.StartInfo.ErrorDialog = false;
+                             this.Cursor = Cursors.WaitCursor;
+                             win.Start();
+                             win.WaitForExit();
+                             this.Cursor = Cursors.Default;
 
-                        Process wing = new Process();
-                        wing.StartInfo.CreateNoWindow = true;
-                        wing.StartInfo.ErrorDialog = false;
-                        wing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                        wing.StartInfo.FileName = @"Bin\trace.bat";
-                        this.Cursor = Cursors.WaitCursor;
-                        wing.Start();
-                        wing.WaitForExit();
-                        this.Cursor = Cursors.Default;
-                        if (File.Exists(@"Bin\trace.bat"))
-                            File.Delete(@"Bin\trace.bat");
-                    }
-                    else
-                        return;
-                }
-                else
-                {
-                    folderBrowserDialog1.Description = choosem;
-                    if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        CopyDirectory(folderBrowserDialog1.SelectedPath, "Utilits/Temp");
-                    }
-                    else
-                        return;
-                }
-                string tmp = DateTime.Now.ToString("dd.MM.yy_HH-mm-ss");
-                if (Directory.Exists("Utilits/Temp"))
-                    using (ZipFile zip = new ZipFile())
-                    {
-                        this.Cursor = Cursors.WaitCursor;
-                        zip.AddDirectory("Utilits/Temp");
-                        zip.Save("Utilits/FTtoZIP" + "_" + tmp + ".zip");
-                        Directory.Delete("Utilits/Temp", true);
-                        this.Cursor = Cursors.Default;
-                    }
-                else
-                    return;
+                         }
+                         finally
+                         {
+                             openFileDialog1.Filter = "Boot Image File |*boot*.img";
+                             if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                             {
+                                 File.Copy(openFileDialog1.FileName, "Utilits\\Temp\\boot.img", true);
+                             }
+                         }
 
-                SoundPlay();
+                         {
+                             Message M = new Message("META-INF", null, null, next, null, null, null, 1, 0);
+                             M.SetDesktopLocation(this.Location.X + (this.Width / 2) - (M.Width / 2), this.Location.Y + (this.Height / 2) - (M.Height / 2));
+                             M.groupBox7.Visible = true;
+                             M.radioButton1.Text = mz;
+                             M.radioButton2.Text = mf;
+                             M.ShowDialog();
+
+                             if (M.radioButton1.Checked == true)
+                             {
+                                 if (openFileDialog2.ShowDialog() == DialogResult.OK)
+                                 {
+                                     string Patch0 = Directory.GetCurrentDirectory() + @"\Bin\trace.bat";
+                                     StreamWriter BatFile0 = new StreamWriter(Patch0, false, Encoding.GetEncoding(866));
+                                     BatFile0.WriteLine("@echo off");
+                                     BatFile0.WriteLine("cd /d " + Directory.GetCurrentDirectory() + @"\Bin");
+                                     BatFile0.WriteLine("7z.exe x " + "\"" + openFileDialog2.FileName.ToString() + "\" -o\"" + Directory.GetCurrentDirectory() + "\\Utilits\\Temp\" META-INF -r -y");
+                                     BatFile0.Close();
+
+                                     Process wing = new Process();
+                                     wing.StartInfo.CreateNoWindow = true;
+                                     wing.StartInfo.ErrorDialog = false;
+                                     wing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                     wing.StartInfo.FileName = @"Bin\trace.bat";
+                                     this.Cursor = Cursors.WaitCursor;
+                                     wing.Start();
+                                     wing.WaitForExit();
+                                     this.Cursor = Cursors.Default;
+                                     if (File.Exists(@"Bin\trace.bat"))
+                                         File.Delete(@"Bin\trace.bat");
+                                 }
+                                 else
+                                     return;
+
+                                 if (Directory.Exists("Utilits\\Temp") == true)
+                                 {
+                                     Directory.Delete("Utilits\\Temp", true);
+                                 }
+                             }
+                             else
+                             {
+                                 folderBrowserDialog1.Description = choosem;
+                                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                                 {
+                                     CopyDirectory(folderBrowserDialog1.SelectedPath, "Utilits/Temp/META-INF");
+
+                                     this.Cursor = Cursors.WaitCursor;
+                                 }
+                                 else
+                                     return;
+                             }
+                             if (Directory.Exists("Utilits/Temp"))
+                             {
+                                 string Patch0 = Directory.GetCurrentDirectory() + @"\Bin\trace.bat";
+                                 StreamWriter BatFile0 = new StreamWriter(Patch0, false, Encoding.GetEncoding(866));
+                                 BatFile0.WriteLine("@echo off");
+                                 BatFile0.WriteLine("cd /d " + Directory.GetCurrentDirectory() + @"\Bin");
+                                 BatFile0.WriteLine("7z.exe a " + "\"" + Directory.GetCurrentDirectory() + "\\Utilits\\FTtoZIP" + "_" + tmp + ".zip" + "\" \"" + Directory.GetCurrentDirectory() + "\\Utilits\\Temp\\*");
+                                 BatFile0.Close();
+
+                                 Process wing = new Process();
+                                 wing.StartInfo.CreateNoWindow = true;
+                                 wing.StartInfo.ErrorDialog = false;
+                                 wing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                 wing.StartInfo.FileName = @"Bin\trace.bat";
+                                 wing.Start();
+                                 wing.WaitForExit();
+                                 this.Cursor = Cursors.Default;
+                                 if (File.Exists(@"Bin\trace.bat"))
+                                     File.Delete(@"Bin\trace.bat");
+                             }
+                             else
+                                 return;
+
+                             if (Directory.Exists("Utilits\\Temp") == true)
+                             {
+                                 Directory.Delete("Utilits\\Temp", true);
+                             }
+
+                             SoundPlay();
+                         }
+                     }
+                     else
+                         return;
+                 }
+                 else
+                 {
+                     {
+                         openFileDialog1.Filter = "System Image File |*system*.img";
+                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                         {
+                             Directory.CreateDirectory("Utilits/Temp");
+                             try
+                             {
+                                 this.Cursor = Cursors.WaitCursor;
+                                 File.Copy(openFileDialog1.FileName, "Utilits\\Temp\\system.img", true);
+                                 this.Cursor = Cursors.Default;
+                             }
+                             finally
+                             {
+                                 openFileDialog1.Filter = "Boot Image File |*boot*.img";
+                                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                                 {
+                                     this.Cursor = Cursors.WaitCursor;
+                                     File.Copy(openFileDialog1.FileName, "Utilits\\Temp\\boot.img", true);
+                                     this.Cursor = Cursors.Default;
+                                 }
+                             }
+
+                             if (File.Exists("Utilits/FTtoZIP" + "_" + tmp + ".zip") == false)
+                                 File.WriteAllBytes("Utilits/FTtoZIP" + "_" + tmp + ".zip", MFAT.Properties.Resources.rom);
+
+                             if (Directory.Exists("Utilits/Temp"))
+                                 using (ZipFile zip = ZipFile.Read("Utilits/FTtoZIP" + "_" + tmp + ".zip"))
+                                 {
+                                     this.Cursor = Cursors.WaitCursor;
+                                     zip.UpdateDirectory("Utilits/Temp");
+                                     zip.Save("Utilits/FTtoZIP" + "_" + tmp + ".zip");
+                                     Directory.Delete("Utilits/Temp", true);
+                                     this.Cursor = Cursors.Default;
+                                 }
+                             else
+                                 return;
+
+                             SoundPlay();
+                         }
+                         else
+                             return;
+                     }
+                 }
+
 
                 ProcessStartInfo startInfo = null;
                 startInfo = new ProcessStartInfo("Explorer");
                 startInfo.UseShellExecute = false;
                 startInfo.Arguments = @"/select," + "\"Utilits\\FTtoZIP" + "_" + tmp + ".zip\"";
                 Process.Start(startInfo);
-
-            }
-            else
-                return;
         }
 
         private void button33_Click(object sender, EventArgs e)

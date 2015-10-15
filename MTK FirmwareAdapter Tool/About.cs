@@ -41,49 +41,49 @@ namespace MTFAT
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.linkLabel1.LinkVisited = true;
+            this.linkLabel2.LinkVisited = true;
             System.Diagnostics.Process.Start("http://forum.china-iphone.ru/member97433.html");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.linkLabel1.LinkVisited = true;
+            this.linkLabel3.LinkVisited = true;
             System.Diagnostics.Process.Start("http://forum.xda-developers.com/member.php?u=4745100");
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.linkLabel1.LinkVisited = true;
+            this.linkLabel4.LinkVisited = true;
             System.Diagnostics.Process.Start("http://iambackx5@gmail.com");
         }
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.linkLabel1.LinkVisited = true;
+            this.linkLabel5.LinkVisited = true;
             System.Diagnostics.Process.Start("http://4pda.ru/forum/index.php?showtopic=465994");
         }
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.linkLabel1.LinkVisited = true;
+            this.linkLabel6.LinkVisited = true;
             System.Diagnostics.Process.Start("http://forum.china-iphone.ru/nuansi-portirovaniya-proshivok-t25594.html");
         }
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.linkLabel1.LinkVisited = true;
+            this.linkLabel7.LinkVisited = true;
             System.Diagnostics.Process.Start("http://forum.xda-developers.com/showthread.php?t=2123239");
-        }
-
-        private void linkLabel5_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("http://4pda.ru/forum/index.php?showtopic=437479");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkLabel8.LinkVisited = true;
+            System.Diagnostics.Process.Start("https://github.com/back37/MTK-FirmwareAdapter-Tool");
         }
 
     }

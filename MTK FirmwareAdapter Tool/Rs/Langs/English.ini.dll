@@ -39,6 +39,9 @@ yf=From YourFiles folder
 sm=Other directory
 mf=Choose unpacked META-INF folder
 mz=Get META-INF from zip
+syn=Use image file
+syu=Unpack system
+syd=Get Choose action with system.img
 
 nw=New project
 

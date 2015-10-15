@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MFAT</RootNamespace>
     <AssemblyName>MTK FirmwareAdapter Tool</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -26,6 +26,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -132,6 +133,7 @@
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,6 +144,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Rs\Bin\cpio_set0" />
+    <None Include="Rs\Bin\rom.zip" />
     <None Include="Rs\Bin\testkey.pk8" />
     <None Include="Rs\Bin\testkey.x509.pem" />
     <None Include="Rs\Projects\IQ446_4.1.2.fat" />
@@ -149,10 +152,13 @@
     <None Include="Rs\Projects\IQ446_4.2.1.fat" />
     <None Include="Rs\Projects\IQ446_4.2.1_BaiduYIOS_from_N828.fat" />
     <None Include="Rs\Projects\IQ446_4.2.1_StockROM_from_Acer_E2.fat" />
+    <None Include="Rs\Projects\LEWA6_ZP998_4.2.2_HOHOL77.fat" />
     <None Include="Rs\Projects\LewaOS_5.1_no crash browsers.IQ446_4.2.1_by_Galaxy_Ace_ICS.fat" />
+    <None Include="Rs\Projects\MIUI6_ZP998_4.4.2_HOHOL77.fat" />
     <None Include="Rs\Projects\MT6575.fat" />
     <None Include="Rs\Projects\MT6577.fat" />
     <None Include="Rs\Projects\MT6589.fat" />
+    <None Include="Rs\Projects\MT6589T.fat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Rs\Langs\Czech.ini.dll" />

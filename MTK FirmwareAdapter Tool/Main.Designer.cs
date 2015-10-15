@@ -460,7 +460,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(589, 39);
             this.label2.TabIndex = 1;
-            this.label2.Text = "MTK FirmwareAdapter Tool 2.0.0.5";
+            this.label2.Text = "MTK FirmwareAdapter Tool 2.0.0.6";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox7
